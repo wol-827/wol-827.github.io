@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div class="tabs is-centered">
-      <ul>
-        <li class="is-active"><a>Cases</a></li>
-        <li><a>AAA</a></li>
-        <li><a>BBB</a></li>
-        <li><a>CCC</a></li>
-      </ul>
-    </div>
     <nuxt />
   </div>
 </template>

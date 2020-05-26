@@ -3,14 +3,14 @@ const routerBase =
   process.env.DEPLOY_ENV === 'GH_PAGES'
     ? {
         router: {
-          base: '/wol-827.github.io/'
-        }
+          base: '/wol-827.github.io/',
+        },
       }
-    : {}
+    : {};
 
 export default {
   router: {
-    ...routerBase
+    ...routerBase,
   },
   mode: 'spa',
   /*
@@ -24,16 +24,16 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: process.env.npm_package_description || ''
-      }
+        content: process.env.npm_package_description || '',
+      },
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       {
         href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
-        rel: 'stylesheet'
-      }
-    ]
+        rel: 'stylesheet',
+      },
+    ],
   },
   /*
    ** Customize the progress-bar color
@@ -46,13 +46,13 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/constants'],
   /*
    ** Nuxt.js dev-modules
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
   ],
   /*
    ** Nuxt.js modules
@@ -62,7 +62,7 @@ export default {
     '@nuxtjs/bulma',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
   ],
   /*
    ** Axios module configuration
@@ -76,13 +76,13 @@ export default {
     postcss: {
       preset: {
         features: {
-          customProperties: false
-        }
-      }
+          customProperties: false,
+        },
+      },
     },
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
-  }
-}
+    extend(config, ctx) {},
+  },
+};
