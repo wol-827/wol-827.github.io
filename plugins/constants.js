@@ -2,7 +2,7 @@ import Vue from 'vue';
 
 const COLUMN_NAMES = {
   CASE_COUNT: [['都道府県', '感染者数']],
-  CASE_PERF: [['都道府県', '感染率']],
+  CASE_PERF: [['都道府県', '感染者数']],
   DEATH_COUNT: [['都道府県', '死者数']],
   DEATH_PERF: [['都道府県', '致死率']],
 };

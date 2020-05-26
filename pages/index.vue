@@ -20,14 +20,14 @@
             :class="{ 'is-active': isActive === 'casePerf' }"
             @click="casePerf"
           >
-            人口10万対
+            人口10万対感染者数
           </a>
           <a
             class="navbar-item is-tab"
-            :class="{ 'is-active': isActive === 'deathPerf' }"
-            @click="isActive = 'deathPerf'"
+            :class="{ 'is-active': isActive === 'deathCount' }"
+            @click="deathCount"
           >
-            死亡率
+            死者数
           </a>
         </div>
       </div>
@@ -103,8 +103,10 @@ export default {
       caseCountMax: 0,
       casePerfData: [],
       casePerfMax: 0,
-      deatchCountData: [],
-      deatchPerfData: [],
+      deathCountData: [],
+      deathCountMax: [],
+      deathPerfData: [],
+      deathPerfMax: [],
       apiResponse: {},
       barChartOptions: {
         bars: 'horizontal',
@@ -185,7 +187,36 @@ export default {
         this.casePerfMax,
       ];
     },
-    deathCount() {},
+    deathCount() {
+      this.isActive = 'deathCount';
+
+      if (this.deathCountData.length === 0) {
+        const deathCountData = this.$COLUMN_NAME.DEATH_COUNT;
+
+        this.apiResponse.forEach((res) => {
+          const deathCount = res.deaths;
+          deathCountData.push([res.name_ja, res.deaths]);
+
+          if (this.deathCountMax < deathCount) {
+            this.deathCountMax = deathCount;
+          }
+        });
+
+        deathCountData.sort((a, b) => {
+          return b[1] - a[1];
+        });
+
+        this.deathCountData = deathCountData;
+      }
+
+      this.chartData = this.deathCountData;
+
+      this.geoChartOptions.colorAxis.values = [
+        0,
+        this.deathCountMax / 2,
+        this.deathCountMax,
+      ];
+    },
   },
 };
 </script>
